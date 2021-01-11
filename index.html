@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首相官邸</title>
+    <link href="https://unpkg.com/sanitize.css"rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <dl class="menu">
+        <dt>ニュース</dt>
+        <dd>
+           <ul>
+               <li>総理の一日</li>
+               <li >内閣官房長官記者会見</li>
+               <li>総理の演説</li>
+               <li>総理の指示・談話</li>
+               <li>内閣官房長官談話など</li>
+           </ul> 
+        </dd>
+
+        <dt>内閣</dt>
+        <dd>
+            <ul>
+                <li>閣議</li>
+                <li>主な閣議決定・本部決定</li>
+                <li>閣僚等名簿</li>
+                <li>閣僚精度</li>
+                <li>歴代内閣</li>
+
+            </ul>
+            
+        </dd>
+    </dl>
+
+    <script src="jquery.min.js"></script>
+    <script>
+        $('.menu dd').hide();
+        $('.menu dt').on('click', function() {
+            $(this).next().slideToggle();
+        })
+
+        $('.menu li').on('click', function() {
+            $('.active').removeClass('active')
+            $(this).addClass('active');
+            $(this).parents('dd').prev().addClass('active');
+        })
+
+        $(document).ready(function() {
+           $('.menu li').each(function() {
+               if ($(this).hasClass('active')) {
+                   $(this).parents('dd').prev().show().addClass('active');
+               }
+           }) 
+        })
+    </script>
+</body>
+</html>
